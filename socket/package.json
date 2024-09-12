@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "socket simulator for the frontend",
   "author": "Hristijan Petrovski",
+  "type": "module",
   "dependencies": {
     "ws": "^8.13.0"
   },
@@ -17,7 +18,7 @@
     "typescript": "^5.0.3"
   },
   "scripts": {
-    "start": "ts-node-dev --respawn --no-notify --quiet src/index.ts",
+    "start": "ts-node-dev --transpile-only --esm --respawn --no-notify --quiet src/index.ts",
     "build": "tsc"
   }
 }
