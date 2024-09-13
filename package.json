@@ -11,10 +11,10 @@
   "author": "Hristijan Petrovski",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "concurrently \"yarn workspace backend start\" \"yarn workspace socket start\" \"yarn workspace frontend dev\"",
-    "postinstall": "concurrently \"yarn workspace backend install\" \"yarn workspace socket install\" \"yarn workspace frontend install\""
+    "start": "concurrently \"yarn workspace backend start\" \"yarn workspace socket start\" \"yarn workspace frontend dev\""
   },
   "dependencies": {
     "concurrently": "^8.0.1"
-  }
+  },
+  "packageManager": "yarn@3.6.1"
 }
