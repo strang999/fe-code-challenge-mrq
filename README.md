@@ -57,13 +57,13 @@ the directories.**
 
 ## Submitting the solution
 
-You should push the starting project monorepo to a private repository (Such as GitHub, GitLab ...)
+You should push the starting project monorepo to a private (personal) repository (Such as GitHub, GitLab ...)
 
 - The starting project should be on the `main` branch.
 - The solution should be on a separate branch
   - There should be an opened pull request from the solution branch to the `main` branch
   - The pull request should have a description of the changes
-- Once you are done, share the repository with `hiring.tech@mrq.com`
+- Once you're done, make the repository public and let us know by sharing its URL via email!
 
 ---
 
