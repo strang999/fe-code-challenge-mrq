@@ -1,9 +1,100 @@
 .symbolCard {
-  border: 2px solid black; /* just for visibility, feel free to remove it */
-  margin: 10px; /* just for visibility, feel free to remove it */
-  padding: 10px; /* just for visibility, feel free to remove it */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 0 0 calc(50% - 8px);
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transform-origin: center;
+  transition: all 0.3s ease;
+  will-change: transform, box-shadow;
 }
 
+.symbolCard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a1a1a;
+  color: white;
+  margin: -12px -12px 12px;
+  padding: 8px 12px;
+  border-radius: 8px 8px 0 0;
+}
+
+.symbolCard__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.symbolCard__symbol {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+}
+
+.symbolCard__trend {
+  position: absolute;
+  right: -15px;
+  top: -10px;
+  transition: transform 0.3s ease;
+}
+
+.symbolCard__trend img {
+  width: 35px;
+  height: 35px;
+}
+
+.symbolCard__label {
+  color: #1a1a1a;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.symbolCard__value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.symbolCard__info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.symbolCard__info--hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  height: 0;
+  pointer-events: none;
+}
+
+.symbolCard__selected {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.symbolCard__unselected {
+  transform: scale(0.98);
+}
+.symbolCard__glow-green {
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+}
+.symbolCard__glow-red {
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+}
 .symbolCard__shake {
   animation: shake 0.62s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
@@ -13,12 +104,10 @@
   90% {
     transform: translateX(-2px);
   }
-
   20%,
   80% {
     transform: translateX(4px);
   }
-
   25%,
   35%,
   45%,
@@ -27,12 +116,31 @@
   75% {
     transform: translateX(-6px);
   }
-
   30%,
   40%,
   50%,
   60%,
   70% {
     transform: translateX(6px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .symbolCard {
+    flex: 0 0 calc(25% - 12px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .symbolCard {
+    padding: 10px;
+    min-height: 100px;
+  }
+  .symbolCard__header {
+    margin: -10px -10px 10px;
+    padding: 8px 10px;
+  }
+  .symbolCard__value {
+    font-size: 1.1rem;
   }
 }
