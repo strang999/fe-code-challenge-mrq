@@ -31,12 +31,21 @@ const initialState: PriceHistoryState = {
 
 export const fetchPriceHistory = createAsyncThunk(
   'stocks/fetchPriceHistory',
-  // if you type your function argument here
   async (symbolId: string, thunkAPI) => {
-    const response = await fetch(`http://localhost:3100/api/stock/history/${symbolId}`, {
-      signal: thunkAPI.signal
-    });
-    return (await response.json()) as PriceHistoryResponse;
+    const controller = new AbortController();
+    thunkAPI.signal.addEventListener('abort', () => controller.abort());
+
+    try {
+      const response = await fetch(`http://localhost:3100/api/stock/history/${symbolId}`, {
+        signal: controller.signal
+      });
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.json();
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(
+        error.name === 'AbortError' ? 'Request aborted' : error.message
+      );
+    }
   }
 );
 

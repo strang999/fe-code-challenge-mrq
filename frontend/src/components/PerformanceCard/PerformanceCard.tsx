@@ -7,11 +7,12 @@ type PerformanceCardProps = {
   title: string;
   volume: number;
   change: number;
+  onClick?: () => void;
 };
 
-const PerformanceCard = ({ title, volume, change }: PerformanceCardProps) => {
+const PerformanceCard = ({ title, volume, change, onClick }: PerformanceCardProps) => {
   return (
-    <div className="performanceCard">
+    <div className="performanceCard" onClick={onClick}>
       <PerformanceInfo label={title} change={change} />
       <TrendLabel change={change} volume={volume} />
     </div>

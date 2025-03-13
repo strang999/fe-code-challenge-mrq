@@ -1,0 +1,16 @@
+.symbolsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  overflow-y: auto;
+  height: 100%;
+  background: #fff;
+  align-content: flex-start;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.symbolsGrid::-webkit-scrollbar {
+  display: none;
+}

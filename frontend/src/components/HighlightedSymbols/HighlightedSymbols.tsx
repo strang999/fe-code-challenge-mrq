@@ -1,6 +1,7 @@
 import React from 'react';
 import './highlightedSymbols.css';
-
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { selectActiveSymbol, setActiveSymbol } from '@/store/dashboardOptionsSlice';
 import PerformanceCard from '@/components/PerformanceCard';
 import Row from '@/components/Row';
 
@@ -51,19 +52,24 @@ const data: HighlightedSymbol[] = [
 ];
 
 const HighlightedSymbols = () => {
+  const dispatch = useAppDispatch();
+  const activeSymbol = useAppSelector(selectActiveSymbol);
+
+  const handleSymbolClick = (symbolId: string) => {
+    dispatch(setActiveSymbol(symbolId === activeSymbol ? null : symbolId));
+  };
+
   return (
     <Row spacing="md" className="highlightedSymbols">
-      {data.map((symbol, index) => {
-        return (
-          <PerformanceCard
-            change={symbol.change}
-            key={index}
-            trend={symbol.trend}
-            title={symbol.symbolId}
-            volume={symbol.volume}
-          />
-        );
-      })}
+      {data.map((symbol) => (
+        <PerformanceCard
+          key={symbol.symbolId}
+          title={symbol.symbolId}
+          volume={symbol.volume}
+          change={symbol.change}
+          onClick={() => handleSymbolClick(symbol.symbolId)}
+        />
+      ))}
     </Row>
   );
 };
